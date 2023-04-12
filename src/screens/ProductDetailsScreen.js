@@ -9,10 +9,9 @@ import {
 } from "react-native";
 import React from "react";
 import products from "../data/products";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import BigButton from "../components/BigButton";
 
 const ProductDetailsScreen = () => {
-  const insets = useSafeAreaInsets();
   const product = products[0];
 
   const addToCart = () => {
@@ -42,14 +41,7 @@ const ProductDetailsScreen = () => {
           </Text>
         </View>
       </ScrollView>
-      <Pressable
-        onPress={addToCart}
-        className={`absolute bottom-[${insets.bottom}] bg-black p-5 self-center rounded-full w-[90%]`}
-      >
-        <Text className="text-white text-center text-base font-medium">
-          Add To Cart
-        </Text>
-      </Pressable>
+      <BigButton absolute title={"Add to Cart"} />
     </View>
   );
 };
