@@ -10,13 +10,15 @@ import {
 import React from "react";
 import products from "../data/products";
 import BigButton from "../components/BigButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cartSlice } from "../store/cartSlice";
 
 const ProductDetailsScreen = () => {
   const product = useSelector((state) => state.products.selectedProduct);
+  const dispatch = useDispatch();
 
   const addToCart = () => {
-    console.warn("Added to Cart");
+    dispatch(cartSlice.actions.addCartItem({ product }));
   };
 
   return (
@@ -42,11 +44,7 @@ const ProductDetailsScreen = () => {
           </Text>
         </View>
       </ScrollView>
-      <BigButton
-        absolute
-        title={"Add to Cart"}
-        onPress={() => console.warn("Added to Cart")}
-      />
+      <BigButton absolute title={"Add to Cart"} onPress={addToCart} />
     </View>
   );
 };
