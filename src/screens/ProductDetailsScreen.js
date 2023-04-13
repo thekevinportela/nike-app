@@ -10,9 +10,10 @@ import {
 import React from "react";
 import products from "../data/products";
 import BigButton from "../components/BigButton";
+import { useSelector } from "react-redux";
 
 const ProductDetailsScreen = () => {
-  const product = products[0];
+  const product = useSelector((state) => state.products.selectedProduct);
 
   const addToCart = () => {
     console.warn("Added to Cart");
@@ -41,7 +42,11 @@ const ProductDetailsScreen = () => {
           </Text>
         </View>
       </ScrollView>
-      <BigButton absolute title={"Add to Cart"} />
+      <BigButton
+        absolute
+        title={"Add to Cart"}
+        onPress={() => console.warn("Added to Cart")}
+      />
     </View>
   );
 };
