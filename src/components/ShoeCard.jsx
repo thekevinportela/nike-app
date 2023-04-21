@@ -3,7 +3,9 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { productsSlice } from "../store/productsSlice";
-
+import { transition } from "../utils";
+import Animated from "react-native-reanimated";
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const ShoeCard = ({ item }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -14,14 +16,16 @@ const ShoeCard = ({ item }) => {
     navigation.navigate("ProductDetails");
   };
   return (
-    <Pressable onPress={handlePress} className="w-[49vw] p-1">
-      <Image
+    <AnimatedPressable onPress={handlePress} className="w-[49vw] p-1">
+      <Animated.Image
         className="w-full aspect-square"
         source={{
           uri: item.image,
         }}
+        sharedTransitionTag={`shared_${item.id}`}
+        // sharedTransitionStyle={transition}
       />
-    </Pressable>
+    </AnimatedPressable>
   );
 };
 

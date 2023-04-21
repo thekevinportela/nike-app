@@ -9,8 +9,11 @@ const BigButton = ({ title, absolute, onPress }) => {
     <Pressable
       onPress={onPress}
       className={`bg-black p-5 self-center rounded-full w-[90vw] mt-5 z-10 ${
-        absolute ? `absolute bottom-9` : ""
+        absolute ? `absolute` : ""
       }`}
+      style={{
+        bottom: absolute ? insets.bottom : 0,
+      }}
     >
       <Text className="text-white text-center text-base font-medium">
         {title}

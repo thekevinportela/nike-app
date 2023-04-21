@@ -36,7 +36,8 @@ const Navigation = () => {
         <Stack.Screen
           name="ProductDetails"
           component={ProductDetailsScreen}
-          options={{ presentation: "modal" }}
+          // options={{ presentation: "modal" }}
+          options={{ animation: "fade_from_bottom", headerShown: false }}
         />
         <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
       </Stack.Navigator>
